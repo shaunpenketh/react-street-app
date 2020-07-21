@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {CardItem, Body, Text} from 'native-base';
+import colors from '../../utils/colors';
 
 const styles = {
   container: {
@@ -8,9 +9,10 @@ const styles = {
     marginVertical: 10,
     padding: 8,
     borderRadius: 3,
+    backgroundColor: colors.teal,
   },
-  nameStyle: {fontWeight: 'bold', fontSize: 20, margin: 2},
-  dateStyle: {marginVertical: 6},
+  nameStyle: {fontWeight: 'bold', fontSize: 20, margin: 2, color: colors.white},
+  dateStyle: {marginVertical: 6, color: colors.white},
 };
 
 const BankHolidayItem = ({name, date}) => {

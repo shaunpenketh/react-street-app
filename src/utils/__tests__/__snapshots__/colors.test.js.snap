@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Colors Remains Unchanged 1`] = `
+Object {
+  "darkGrey": "#525659",
+  "teal": "#5CBE9D",
+  "white": "#fff",
+}
+`;

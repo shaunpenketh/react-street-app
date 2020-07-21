@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  act,
-  getAllByTestId,
-  render,
-  waitForElement,
-  wait,
-} from '@testing-library/react-native';
+import {act, render, waitForElement, wait} from '@testing-library/react-native';
 import BankHolidaysScreen from '../BankHolidays';
 import bankHolidaysApis from 'api/bankHolidays';
 

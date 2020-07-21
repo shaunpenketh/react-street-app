@@ -6,9 +6,15 @@ import filters from 'utils/filters';
 import sorting from 'utils/sorting';
 import merging from 'utils/merging';
 import BankHolidayItem from 'components/display/bankHolidayItem';
+import colors from '../utils/colors';
 
 const styles = {
-  main: {flex: 1, alignItems: 'center', paddingTop: 20},
+  main: {
+    flex: 1,
+    alignItems: 'center',
+    paddingTop: 20,
+    backgroundColor: colors.darkGrey,
+  },
 };
 
 const BankHolidaysScreen = () => {
@@ -25,8 +31,6 @@ const BankHolidaysScreen = () => {
       try {
         // Retrieve data from api
         const {data} = await bankHolidaysApi.getBankHolidays();
-
-        console.log(data);
 
         // Split in to england / scotland / ireland
         const {

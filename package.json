@@ -44,6 +44,9 @@
     "preset": "react-native",
     "transformIgnorePatterns": [
       "/node_modules/(?!native-base)/"
+    ],
+    "setupFilesAfterEnv": [
+      "@testing-library/react-native/cleanup-after-each"
     ]
   }
 }
