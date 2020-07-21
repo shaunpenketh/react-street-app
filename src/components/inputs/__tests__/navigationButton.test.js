@@ -6,12 +6,12 @@ import NavigationButton from '../NavigationButton';
 test('it renders item to the screen with correct label', async () => {
   const mockFn = jest.fn();
   const label = 'Test Label';
-  const {getByTestId, getByText} = render(
+  const {getByTestId} = render(
     <NavigationButton onPress={mockFn} label={label} />,
   );
 
   const buttonItem = getByTestId('navigationButton');
-  const labelItem = getByText(label);
+  const labelItem = getByTestId('navigationButtonText');
 
   expect(buttonItem).toBeTruthy();
   expect(labelItem).toBeTruthy();
