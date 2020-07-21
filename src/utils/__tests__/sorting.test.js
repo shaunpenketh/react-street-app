@@ -11,7 +11,7 @@ describe('Sorting tests', () => {
         {date: '2020-02-01'},
       ];
 
-      const sortedDates = sorting.sortByDate(dates);
+      const sortedDates = sorting.sortByDate(dates, 'asc');
 
       expect(sortedDates).toEqual([
         {date: '2020-01-01'},
@@ -19,6 +19,26 @@ describe('Sorting tests', () => {
         {date: '2020-04-01'},
         {date: '2020-05-01'},
         {date: '2020-06-01'},
+      ]);
+    });
+
+    it('correctly sorts the dates in to descending order', () => {
+      const dates = [
+        {date: '2020-04-01'},
+        {date: '2020-06-01'},
+        {date: '2020-01-01'},
+        {date: '2020-05-01'},
+        {date: '2020-02-01'},
+      ];
+
+      const sortedDates = sorting.sortByDate(dates, 'desc');
+
+      expect(sortedDates).toEqual([
+        {date: '2020-06-01'},
+        {date: '2020-05-01'},
+        {date: '2020-04-01'},
+        {date: '2020-02-01'},
+        {date: '2020-01-01'},
       ]);
     });
   });
