@@ -1,13 +1,14 @@
-import _ from 'lodash';
 import React, {useEffect, useState} from 'react';
+
 import {View, Text} from 'react-native';
-import bankHolidaysApi from '../api/bankHolidays';
-import filters from '../utils/filters';
-import sorting from '../utils/sorting';
-import merging from '../utils/merging';
+import bankHolidaysApi from 'api/bankHolidays';
+import filters from 'utils/filters';
+import sorting from 'utils/sorting';
+import merging from 'utils/merging';
+import BankHolidayItem from 'components/display/bankHolidayItem';
 
 const styles = {
-  main: {flex: 1, alignItems: 'center', justifyContent: 'center'},
+  main: {flex: 1, alignItems: 'center', paddingTop: 20},
 };
 
 const BankHolidaysScreen = () => {
@@ -31,8 +32,6 @@ const BankHolidaysScreen = () => {
           scotland,
           'northern-ireland': ireland,
         } = data;
-
-        console.log(englandAndWales);
 
         // filter after today's date
         const englandAndWalesFiltered = filterAfterToday(
@@ -67,12 +66,8 @@ const BankHolidaysScreen = () => {
   return (
     <View style={main}>
       {error && <Text>{error}</Text>}
-      <Text>Bank Holidays</Text>
       {bankHolidays.map((item, index) => (
-        <View key={`key-${item.title}-${index}`}>
-          <Text>{item.title}</Text>
-          <Text>{item.date}</Text>
-        </View>
+        <BankHolidayItem name={item.title} date={item.date} key={index} />
       ))}
     </View>
   );

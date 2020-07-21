@@ -5,6 +5,7 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
+    "cocoapods": "cd ios && ",
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint ."
@@ -16,6 +17,8 @@
     "axios": "^0.19.2",
     "lodash": "^4.17.19",
     "moment": "^2.27.0",
+    "native-base": "^2.13.13",
+    "prop-types": "^15.7.2",
     "react": "16.13.1",
     "react-native": "0.63.1",
     "react-native-gesture-handler": "^1.6.1",
@@ -27,6 +30,7 @@
     "@babel/core": "^7.10.5",
     "@babel/runtime": "^7.10.5",
     "@react-native-community/eslint-config": "^2.0.0",
+    "@testing-library/react-native": "^5.0.3",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.1.0",
     "babel-plugin-module-resolver": "^4.0.0",
@@ -36,6 +40,9 @@
     "react-test-renderer": "16.13.1"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "transformIgnorePatterns": [
+      "/node_modules/(?!native-base)/"
+    ]
   }
 }

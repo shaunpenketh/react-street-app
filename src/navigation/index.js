@@ -10,8 +10,16 @@ const Stack = createStackNavigator();
 const AppNavigator = () => (
   <NavigationContainer>
     <Stack.Navigator>
-      <Stack.Screen name="HomeScreen" component={HomeScreen} />
-      <Stack.Screen name="BankHolidays" component={BankHolidays} />
+      <Stack.Screen
+        name="HomeScreen"
+        component={HomeScreen}
+        options={{title: 'Home'}}
+      />
+      <Stack.Screen
+        name="BankHolidays"
+        component={BankHolidays}
+        options={{title: 'UK Bank Holidays'}}
+      />
     </Stack.Navigator>
   </NavigationContainer>
 );
