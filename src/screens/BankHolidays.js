@@ -13,7 +13,7 @@ const styles = {
 
 const BankHolidaysScreen = () => {
   const {main} = styles;
-  const [bankHolidays, setBankHolidays] = useState([]);
+  const [bankHolidays, setBankHolidays] = useState(undefined);
   const [error, setError] = useState(undefined);
 
   useEffect(() => {
@@ -25,6 +25,8 @@ const BankHolidaysScreen = () => {
       try {
         // Retrieve data from api
         const {data} = await bankHolidaysApi.getBankHolidays();
+
+        console.log(data);
 
         // Split in to england / scotland / ireland
         const {
@@ -65,10 +67,11 @@ const BankHolidaysScreen = () => {
 
   return (
     <View style={main}>
-      {error && <Text>{error}</Text>}
-      {bankHolidays.map((item, index) => (
-        <BankHolidayItem name={item.title} date={item.date} key={index} />
-      ))}
+      {error && <Text testID={'bankHolidaysApiError'}>{error}</Text>}
+      {bankHolidays &&
+        bankHolidays.map((item, index) => (
+          <BankHolidayItem name={item.title} date={item.date} key={index} />
+        ))}
     </View>
   );
 };

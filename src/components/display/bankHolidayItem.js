@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import {CardItem, Body, Text} from 'native-base';
 
 const styles = {
-  container: {marginHorizontal: 15, marginVertical: 10, padding: 8},
+  container: {
+    marginHorizontal: 15,
+    marginVertical: 10,
+    padding: 8,
+    borderRadius: 3,
+  },
   nameStyle: {fontWeight: 'bold', fontSize: 20, margin: 2},
   dateStyle: {marginVertical: 6},
 };
