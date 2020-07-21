@@ -3,7 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import HomeScreen from 'screens/HomeScreen';
-import BankHolidays from 'screens/BankHolidays';
+import BankHolidaysScreen from 'screens/BankHolidaysScreen';
 import MapScreen from 'screens/MapScreen';
 import colors from 'utils/colors';
 
@@ -31,7 +31,7 @@ const AppNavigator = () => (
       />
       <Stack.Screen
         name="BankHolidays"
-        component={BankHolidays}
+        component={BankHolidaysScreen}
         options={{title: 'UK Bank Holidays'}}
       />
       <Stack.Screen
