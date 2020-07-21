@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text} from 'react-native';
-import MapView from 'react-native-maps';
+import MapView, {Marker} from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
 
 const styles = {
@@ -9,7 +8,8 @@ const styles = {
 
 const MapScreen = ({navigation}) => {
   const {main} = styles;
-  const [location, setLocation] = useState({
+
+  const [region, setRegion] = useState({
     latitude: 0,
     longitude: 0,
   });
@@ -17,26 +17,15 @@ const MapScreen = ({navigation}) => {
   useEffect(() => {
     (async () => {
       Geolocation.getCurrentPosition((info) =>
-        setLocation({
-          latitude: info.latitude,
-          longitude: info.longitude,
+        setRegion({
+          latitude: info.coords.latitude,
+          longitude: info.coords.longitude,
         }),
       );
     })();
   }, []);
 
-  return (
-    <MapView
-      style={main}
-      showsUserLocation
-      initialRegion={{
-        latitude: -6.270565,
-        longitude: 106.75955,
-        latitudeDelta: 1,
-        longitudeDelta: 1,
-      }}
-    />
-  );
+  return <MapView style={main} showsUserLocation maxZoomLevel={20} />;
 };
 
 export default MapScreen;
