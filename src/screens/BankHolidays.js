@@ -14,8 +14,7 @@ const BankHolidaysScreen = () => {
   useEffect(() => {
     (async () => {
       try {
-        const bankHolidaysFromApi = bankHolidaysApi.getBankHolidays();
-        console.log(bankHolidaysFromApi);
+        const {data} = await bankHolidaysApi.getBankHolidays();
       } catch (err) {
         setError(err.message);
       }
@@ -24,6 +23,7 @@ const BankHolidaysScreen = () => {
 
   return (
     <View style={main}>
+      {error && <Text>{error}</Text>}
       <Text>Bank Holidays</Text>
     </View>
   );
