@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react';
 import MapView, {Marker} from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
+import Config from 'react-native-config';
 
 const styles = {
   main: {flex: 1},
@@ -14,12 +15,9 @@ const MapScreen = ({navigation}) => {
     longitude: -2.2458508,
   };
 
-  const [region, setRegion] = useState({
-    latitude: 37.78825,
-    longitude: -122.4324,
-    latitudeDelta: 0.05,
-    longitudeDelta: 0.05,
-  });
+  const onMapReady = () => {
+    mapView.current.fitToElements(true);
+  };
 
   const [currentLocation, setCurrentLocation] = useState({
     latitude: 0,
@@ -37,19 +35,8 @@ const MapScreen = ({navigation}) => {
     })();
   }, []);
 
-  useEffect(() => {
-    if (mapView === null) {
-      return;
-    }
-    mapView.current.fitToElements(true);
-  }, [mapView]);
-
   return (
-    <MapView
-      style={main}
-      initialRegion={region}
-      onRegionChangeComplete={(region) => setRegion(region)}
-      ref={mapView}>
+    <MapView style={main} ref={mapView} onMapReady={onMapReady}>
       <Marker coordinate={currentLocation} pinColor={'green'} />
       <Marker coordinate={manchesterArenaCoordinates} />
     </MapView>
