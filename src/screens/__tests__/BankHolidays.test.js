@@ -1,17 +1,11 @@
 import React from 'react';
-import {
-  act,
-  render,
-  waitForElement,
-  wait,
-  getByTestId,
-} from '@testing-library/react-native';
+import {act, render, waitForElement, wait} from '@testing-library/react-native';
 import BankHolidaysScreen from '../BankHolidaysScreen';
 import bankHolidaysApis from 'api/bankHolidays';
 import MockDate from 'mockdate';
-import moment from 'moment';
 
 test('it displays items to the screen after retrieval from api', async () => {
+  MockDate.set('2021-10-22');
   const promise = Promise.resolve();
   const mockApi = jest
     .spyOn(bankHolidaysApis, 'getBankHolidays')

@@ -14,3 +14,5 @@ Finally, you can run
 
 + `yarn start`
 + `yarn ios` OR `yarn android` dependent on your preference
+
+After which you my wish to test the application by running `yarn test`
