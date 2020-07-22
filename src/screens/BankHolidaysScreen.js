@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-
+import moment from 'moment';
 import {View, Text} from 'react-native';
 import bankHolidaysApi from 'api/bankHolidays';
 import filters from 'utils/filters';
@@ -23,7 +23,7 @@ const BankHolidaysScreen = () => {
   const [error, setError] = useState(undefined);
 
   useEffect(() => {
-    const {filterAfterToday} = filters;
+    const {filterBetweenDates} = filters;
     const {sortByDate} = sorting;
     const {mergeArrays} = merging;
 
@@ -31,6 +31,8 @@ const BankHolidaysScreen = () => {
       try {
         // Retrieve data from api
         const {data} = await bankHolidaysApi.getBankHolidays();
+        const todaysDate = moment();
+        const sixMonthsTime = moment().add(6, 'months');
 
         // Split in to england / scotland / ireland
         const {
@@ -39,12 +41,22 @@ const BankHolidaysScreen = () => {
           'northern-ireland': ireland,
         } = data;
 
-        // filter after today's date
-        const englandAndWalesFiltered = filterAfterToday(
+        // filter between today's date and date in 6 months
+        const englandAndWalesFiltered = filterBetweenDates(
           englandAndWales.events,
+          todaysDate,
+          sixMonthsTime,
         );
-        const scotlandFiltered = filterAfterToday(scotland.events);
-        const irelandFiltered = filterAfterToday(ireland.events);
+        const scotlandFiltered = filterBetweenDates(
+          scotland.events,
+          todaysDate,
+          sixMonthsTime,
+        );
+        const irelandFiltered = filterBetweenDates(
+          ireland.events,
+          todaysDate,
+          sixMonthsTime,
+        );
 
         // merge all results
         const ukBankHolidays = mergeArrays(
