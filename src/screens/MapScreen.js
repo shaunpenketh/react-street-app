@@ -43,7 +43,7 @@ const MapScreen = () => {
           <MapViewDirections
             origin={currentLocation}
             destination={manchesterArenaCoordinates}
-            apikey={Config.GOOGLE_MAPS_APIKEY}
+            apikey={Config.GOOGLE_MAPS_API_KEY}
             strokeWidth={4}
             strokeColor={colors.darkGrey}
           />
