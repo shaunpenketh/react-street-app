@@ -2,13 +2,15 @@ import React, {useState, useEffect, useRef} from 'react';
 import MapView, {Marker} from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
 import Config from 'react-native-config';
+import MapViewDirections from 'react-native-maps-directions';
+import colors from 'utils/colors';
 
 const styles = {
-  main: {flex: 1},
+  map: {flex: 1},
 };
 
-const MapScreen = ({navigation}) => {
-  const {main} = styles;
+const MapScreen = () => {
+  const {map} = styles;
   const mapView = useRef(null);
   const manchesterArenaCoordinates = {
     latitude: 53.4880988,
@@ -19,10 +21,7 @@ const MapScreen = ({navigation}) => {
     mapView.current.fitToElements(true);
   };
 
-  const [currentLocation, setCurrentLocation] = useState({
-    latitude: 0,
-    longitude: 0,
-  });
+  const [currentLocation, setCurrentLocation] = useState(null);
 
   useEffect(() => {
     (async () => {
@@ -36,9 +35,20 @@ const MapScreen = ({navigation}) => {
   }, []);
 
   return (
-    <MapView style={main} ref={mapView} onMapReady={onMapReady}>
-      <Marker coordinate={currentLocation} pinColor={'green'} />
-      <Marker coordinate={manchesterArenaCoordinates} />
+    <MapView style={map} ref={mapView} onMapReady={onMapReady}>
+      {currentLocation && (
+        <>
+          <Marker coordinate={currentLocation} pinColor={'green'} />
+          <Marker coordinate={manchesterArenaCoordinates} />
+          <MapViewDirections
+            origin={currentLocation}
+            destination={manchesterArenaCoordinates}
+            apikey={Config.GOOGLE_MAPS_APIKEY}
+            strokeWidth={4}
+            strokeColor={colors.darkGrey}
+          />
+        </>
+      )}
     </MapView>
   );
 };
