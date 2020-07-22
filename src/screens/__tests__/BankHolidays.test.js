@@ -1,6 +1,6 @@
 import React from 'react';
 import {act, render, waitForElement, wait} from '@testing-library/react-native';
-import BankHolidaysScreen from '../BankHolidays';
+import BankHolidaysScreen from '../BankHolidaysScreen';
 import bankHolidaysApis from 'api/bankHolidays';
 
 test('it displays items to the screen after retrieval from api', async () => {
